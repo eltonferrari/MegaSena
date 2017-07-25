@@ -32,7 +32,7 @@ public class MegaSenaParcer {
             scan.useDelimiter(";");
             Jogo jogo = null;
             List listaJogos = new ArrayList<>();
-            
+            int[] contagem = new int[60];
             
             while (scan.hasNext()) {
                 String dados = scan.nextLine();
@@ -49,6 +49,7 @@ public class MegaSenaParcer {
                 jogo = new Jogo(concurso,linhas[1],numero);
                 System.out.println(jogo);
                 listaJogos.add(jogo);
+                
             }
             
         } catch (FileNotFoundException ex) {
