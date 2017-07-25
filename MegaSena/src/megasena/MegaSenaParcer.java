@@ -21,6 +21,7 @@ public class MegaSenaParcer {
     private int n5;
     private int n6;
     private Numero numero;
+    private int[] contador;
 
     public MegaSenaParcer(String ms) {
         LeituraJogo(ms);
@@ -46,6 +47,7 @@ public class MegaSenaParcer {
                 n6 = Integer.parseInt(linhas[7]);
                 numero = new Numero(n1, n2, n3, n4, n5, n6);
                 numero = ordena(numero);
+                contagem(numero);
                 jogo = new Jogo(concurso,linhas[1],numero);
                 System.out.println(jogo);
                 listaJogos.add(jogo);
@@ -69,5 +71,22 @@ public class MegaSenaParcer {
         Arrays.sort(list);
         ordenado = new Numero(list[0],list[1],list[2],list[3],list[4],list[5]);
         return ordenado;
+    }
+
+    private void contagem(Numero numero) {
+        int[] conta = new int[60];
+        for (int i = 0; i < 60; i++) {
+            conta[i] = 0; 
+        }
+        int[] list = new int[6];
+        list[0] = numero.getN1();
+        list[1] = numero.getN2();
+        list[2] = numero.getN3();
+        list[3] = numero.getN4();
+        list[4] = numero.getN5();
+        list[5] = numero.getN6();
+        for (int i = 0; i < 6; i++) {
+            conta[list[i] + 1]++; 
+        }
     }
 }
