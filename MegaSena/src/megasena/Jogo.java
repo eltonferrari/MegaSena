@@ -5,7 +5,9 @@
  */
 package megasena;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -13,12 +15,13 @@ import java.util.Arrays;
  */
 class Jogo {
     
-    private Numero n1, n2, n3, n4, n5, n6;
-
+    private int n, n1, n2, n3, n4, n5, n6;
+    public List contagem = new ArrayList();
+    
     public Jogo() {
     }
 
-    public Jogo(Numero n1, Numero n2, Numero n3, Numero n4, Numero n5, Numero n6) {
+    public Jogo(int n1, int n2, int n3, int n4, int n5, int n6) {
         this.n1 = n1;
         this.n2 = n2;
         this.n3 = n3;
@@ -27,57 +30,57 @@ class Jogo {
         this.n6 = n6;
     }
 
-    public Numero getN1() {
+    public int getN1() {
         return n1;
     }
 
-    public void setN1(Numero n1) {
+    public void setN1(int n1) {
         this.n1 = n1;
     }
 
-    public Numero getN2() {
+    public int getN2() {
         return n2;
     }
 
-    public void setN2(Numero n2) {
+    public void setN2(int n2) {
         this.n2 = n2;
     }
 
-    public Numero getN3() {
+    public int getN3() {
         return n3;
     }
 
-    public void setN3(Numero n3) {
+    public void setN3(int n3) {
         this.n3 = n3;
     }
 
-    public Numero getN4() {
+    public int getN4() {
         return n4;
     }
 
-    public void setN4(Numero n4) {
+    public void setN4(int n4) {
         this.n4 = n4;
     }
 
-    public Numero getN5() {
+    public int getN5() {
         return n5;
     }
 
-    public void setN5(Numero n5) {
+    public void setN5(int n5) {
         this.n5 = n5;
     }
 
-    public Numero getN6() {
+    public int getN6() {
         return n6;
     }
 
-    public void setN6(Numero n6) {
+    public void setN6(int n6) {
         this.n6 = n6;
     }
 
     public Jogo ordena() {
         Jogo ordenado;
-        Numero[] list = new Numero[6];
+        int[] list = new int[6];
         list[0] = this.n1;
         list[1] = this.n2;
         list[2] = this.n3;
@@ -88,6 +91,24 @@ class Jogo {
         ordenado = new Jogo(list[0],list[1],list[2],list[3],list[4],list[5]);
         return ordenado;
     }
+    
+    public int[] contagem() {
+        int[] conta = new int[60];
+        for (int i = 0; i < 60; i++) {
+            conta[i] = 0; 
+        }
+        int[] list = new int[6];
+        list[0] = this.n1;
+        list[1] = this.n2;
+        list[2] = this.n3;
+        list[3] = this.n4;
+        list[4] = this.n5;
+        list[5] = this.n6;
+        for (int i = 0; i < 6; i++) {
+            conta[list[i] + 1]++; 
+        }
+        return conta;
+    }    
 
     @Override
     public String toString() {
