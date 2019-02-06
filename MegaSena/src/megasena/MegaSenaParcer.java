@@ -32,7 +32,7 @@ public class MegaSenaParcer {
         try {
             Scanner scan = new Scanner(new File(f));
             scan.useDelimiter(";");
-            Jogo jogo, jogoOrdenado = null;
+            Jogo jogo, jogoOrdenado , jogoContado = null;
             List listaJogos = new ArrayList<>();
             int[] contagem = new int[60];
             
@@ -48,8 +48,7 @@ public class MegaSenaParcer {
                 n6 = Integer.parseInt(linha[7]);
                 jogo = new Jogo(n1, n2, n3, n4, n5, n6);
                 jogoOrdenado = jogo.ordena();
-                jogoContado = new int[60];
-                jogoContado = jogoOrdenado.contagem();
+                
                 
                 Concurso concurso = new Concurso(numeroConcurso,linha[1],jogo);
                 System.out.println(jogoOrdenado);

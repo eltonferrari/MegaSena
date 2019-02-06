@@ -16,7 +16,8 @@ import java.util.List;
 class Jogo {
     
     private int n, n1, n2, n3, n4, n5, n6;
-    public List contagem = new ArrayList();
+    public int[] conta = new int[60];
+    private Jogo jogo;
     
     public Jogo() {
     }
@@ -92,21 +93,10 @@ class Jogo {
         return ordenado;
     }
     
-    public int[] contagem() {
-        int[] conta = new int[60];
-        for (int i = 0; i < 60; i++) {
-            conta[i] = 0; 
-        }
-        int[] list = new int[6];
-        list[0] = this.n1;
-        list[1] = this.n2;
-        list[2] = this.n3;
-        list[3] = this.n4;
-        list[4] = this.n5;
-        list[5] = this.n6;
-        for (int i = 0; i < 6; i++) {
-            conta[list[i] + 1]++; 
-        }
+    public int[] contaJogo(int[] contagem, Jogo jogo) {
+        this.conta = contagem;
+        this.jogo = jogo;
+        
         return conta;
     }    
 
