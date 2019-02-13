@@ -73,7 +73,7 @@ public class MegaSenaParcer {
                 numeroMenor = i + 1;
             }
         }
-        System.out.println("Nº mais jogado: " + numeroMaior + " X " + maior);
-        System.out.println("Nº menos jogado: " + numeroMenor + " X " + menor);
+        System.out.println("Nº  mais jogado: " + numeroMaior + ", " + maior + " vezes");
+        System.out.println("Nº menos jogado: " + numeroMenor + ", " + menor + " vezes");
     }
 }
