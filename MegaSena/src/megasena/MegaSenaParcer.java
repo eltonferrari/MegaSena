@@ -24,6 +24,7 @@ public class MegaSenaParcer {
     private Jogo jogoOrdenado;                
     private int[] jogoContado = new int[60];   
     private int[] contagem = new int[60];
+    List listaJogos = new ArrayList<>();
 
     public MegaSenaParcer(String ms) {
         LeituraJogo(ms);
@@ -34,9 +35,6 @@ public class MegaSenaParcer {
             Scanner scan = new Scanner(new File(f));
             scan.useDelimiter(";");
             Jogo jogo, jogoOrdenado , jogoContado = null;
-            List listaJogos = new ArrayList<>();
-            
-            
             while (scan.hasNext()) {
                 String dados = scan.nextLine();
                 String[] linha = dados.split(";");
@@ -57,5 +55,25 @@ public class MegaSenaParcer {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MegaSenaParcer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        for (int i = 0; i < 60; i ++) {
+            System.out.println("Nº: " + (i + 1) + " X " + jogoContado[i]);
+        }
+        int maior = 0;
+        int menor = 1000;
+        int numeroMaior = 0;
+        int numeroMenor = 0;
+            
+        for (int i = 0; i < 60; i ++) {
+            if (jogoContado[i] > maior){
+                maior = jogoContado[i];
+                numeroMaior = i + 1;
+            }
+            if (jogoContado[i] < menor){
+                menor = jogoContado[i];
+                numeroMenor = i + 1;
+            }
+        }
+        System.out.println("Nº mais jogado: " + numeroMaior + " X " + maior);
+        System.out.println("Nº menos jogado: " + numeroMenor + " X " + menor);
     }
 }
