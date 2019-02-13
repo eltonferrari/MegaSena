@@ -96,7 +96,6 @@ class Jogo {
     public int[] contaJogo(int[] contagem, Jogo jogo) {
         this.conta = contagem;
         this.jogo = jogo;
-        
         int[] list = new int[6];
         list[0] = jogo.getN1();
         list[1] = jogo.getN2();
@@ -104,17 +103,9 @@ class Jogo {
         list[3] = jogo.getN4();
         list[4] = jogo.getN5();
         list[5] = jogo.getN6();
-        
         for(int i = 0; i < 6; i++){
-            
+            conta[list[i] - 1] ++; 
         }
-        
-        for (int i = 0; i < 6; i++) {
-            conta[list[i] + 1]++; 
-        }
-        
-        
-        
         return conta;
     }    
 

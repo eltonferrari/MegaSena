@@ -22,7 +22,8 @@ public class MegaSenaParcer {
     private int n6;
     private Jogo jogo;
     private Jogo jogoOrdenado;                
-    private int[] jogoContado;                
+    private int[] jogoContado = new int[60];   
+    private int[] contagem = new int[60];
 
     public MegaSenaParcer(String ms) {
         LeituraJogo(ms);
@@ -34,7 +35,7 @@ public class MegaSenaParcer {
             scan.useDelimiter(";");
             Jogo jogo, jogoOrdenado , jogoContado = null;
             List listaJogos = new ArrayList<>();
-            int[] contagem = new int[60];
+            
             
             while (scan.hasNext()) {
                 String dados = scan.nextLine();
@@ -48,14 +49,11 @@ public class MegaSenaParcer {
                 n6 = Integer.parseInt(linha[7]);
                 jogo = new Jogo(n1, n2, n3, n4, n5, n6);
                 jogoOrdenado = jogo.ordena();
-                
-                
+                this.jogoContado = jogo.contaJogo(contagem, jogoOrdenado);
                 Concurso concurso = new Concurso(numeroConcurso,linha[1],jogo);
                 System.out.println(jogoOrdenado);
-                listaJogos.add(jogo);
-                
-            }
-            
+                listaJogos.add(jogo);                
+            }            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MegaSenaParcer.class.getName()).log(Level.SEVERE, null, ex);
         }
