@@ -50,8 +50,8 @@ public class MegaSenaParcer {
                 jogo = new Jogo(n1, n2, n3, n4, n5, n6);
                 jogoOrdenado = jogo.ordena();
                 this.jogoContado = jogo.contaJogo(contagem, jogoOrdenado);
-                Concurso concurso = new Concurso(numeroConcurso,linha[1],jogo);
-                System.out.println(jogoOrdenado);
+                Concurso concurso = new Concurso(numeroConcurso,linha[1],jogoOrdenado);
+                System.out.println(concurso);
                 listaJogos.add(jogo);                
             }            
         } catch (FileNotFoundException ex) {

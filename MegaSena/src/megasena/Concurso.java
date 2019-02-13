@@ -39,9 +39,8 @@ public class Concurso {
 
     @Override
     public String toString() {
-        return "Concurso{" + "numeroConcurso=" + numeroConcurso + 
-                             ", data=" + data + 
-                             ", jogo=" + jogo + 
-                       '}';
+        return "Concurso nº " + numeroConcurso + 
+               ", Data: " + data + 
+               ", Dezenas: " + jogo;
     }      
 }
