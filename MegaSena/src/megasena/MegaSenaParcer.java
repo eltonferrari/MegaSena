@@ -58,22 +58,9 @@ public class MegaSenaParcer {
         for (int i = 0; i < 60; i ++) {
             System.out.println("Nº: " + (i + 1) + " X " + jogoContado[i]);
         }
-        int maior = 0;
-        int menor = 1000;
-        int numeroMaior = 0;
-        int numeroMenor = 0;
-            
-        for (int i = 0; i < 60; i ++) {
-            if (jogoContado[i] > maior){
-                maior = jogoContado[i];
-                numeroMaior = i + 1;
-            }
-            if (jogoContado[i] < menor){
-                menor = jogoContado[i];
-                numeroMenor = i + 1;
-            }
-        }
-        System.out.println("Nº  mais jogado: " + numeroMaior + ", " + maior + " vezes");
-        System.out.println("Nº menos jogado: " + numeroMenor + ", " + menor + " vezes");
+        
+        
+        System.out.println("Nºs  mais jogado: " + aposta1 + ", " + aposta2 + ", " + aposta3 + ".");
+        System.out.println("Nºs menos jogado: " + aposta4 + ", " + aposta5 + ", " + aposta6 + ".");
     }
 }
