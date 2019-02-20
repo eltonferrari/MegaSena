@@ -15,11 +15,7 @@ import java.util.List;
  */
 class Jogo {
     
-    private int n1, n2, n3, n4, n5, n6, 
-                maior1 = 0, maior2 = 0, maior3 = 0, 
-                menor1 = 1000, menor2 = 1000, menor3 = 1000, 
-                numeroMaior = 0, numeroMenor = 0;
-    private int[] maiores, menores;
+    private int n1, n2, n3, n4, n5, n6;
     private int[] conta = new int[60];
     private Jogo jogo;
         
@@ -113,34 +109,6 @@ class Jogo {
         return conta;
     }
     
-    public String maiores(int[] contagem){
-        this.conta = contagem;
-        for (int i = 0; i < 60; i++) {
-            if (this.conta[i] >= maior1) {
-                maior3 = maior2;
-                maior2 = maior1;
-                maior1 = i;
-            }
-            if ((this.conta[i] >= maior2) && (this.conta[i] < maior1)) {
-                maior3 = maior2;
-                maior2 = i;
-            }
-            if ((this.conta[i] >= maior3) && (this.conta[i] < maior2)) {
-                maior3 = i;
-            }
-        }
-        this.maiores = new int[3];
-        this.maiores[0] = maior1;
-        this.maiores[1] = maior2;
-        this.maiores[2] = maior3;
-        return this.maiores;
-    }            
-    
-    public int[] menores(int[] contagem){
-        
-        return this.conta;
-    }
-
     @Override
     public String toString() {
         return n1 + ", " + 

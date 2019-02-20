@@ -24,6 +24,10 @@ public class MegaSenaParcer {
     private Jogo jogoOrdenado;                
     private int[] jogoContado = new int[60];   
     private int[] contagem = new int[60];
+    int[] maiores = new int [60];
+    int maior1, maiorI1 = 0;
+    int maior2, maiorI2 = 0;
+    int maior3, maiorI3 = 0;
     List listaJogos = new ArrayList<>();
 
     public MegaSenaParcer(String ms) {
@@ -59,8 +63,64 @@ public class MegaSenaParcer {
             System.out.println("Nº: " + (i + 1) + " X " + jogoContado[i]);
         }
         
+       maiores = jogoContado;
+        for (int i = 0; i < 60; i++) {
+            if (maiores[i] >= maior1) {
+                maior3 = maior2;
+                maiorI3 = maiorI2;
+                maior2 = maior1;
+                maiorI2 = maiorI1;
+                maior1 = maiores[i];
+                maiorI1 = i;
+            }
+            if ((maiores[i] >= maior2) && (maiores[i] <= maior1)) {
+                maior3 = maior2;
+                maiorI3 = maiorI2;
+                maior2 = maiores[i];
+                maiorI2 = i;
+            }
+            if ((maiores[i] >= maior3) && (maiores[i] <= maior2)) {
+                maior3 = maiores[i];
+                maiorI3 = i;
+            }
+        }
+        System.out.println("Os 3 nºs mais sorteados são: " + (maiorI1 + 1) + ", " + (maiorI2 + 1) + " e " + (maiorI3 + 1) + ".");
         
-        System.out.println("Nºs  mais jogado: " + aposta1 + ", " + aposta2 + ", " + aposta3 + ".");
-        System.out.println("Nºs menos jogado: " + aposta4 + ", " + aposta5 + ", " + aposta6 + ".");
+        
+        
+                
+        
+        
+        
+                
+        
+        
+        
+        
+       
+    /*public String menores(int[] contagem){
+        this.maiores = contagem;
+        for (int i = 0; i < 60; i++) {
+            if (this.maiores[i] <= menor1) {
+                menor3 = menor2;
+                menor2 = menor1;
+                menor1 = i;
+            }
+            if ((this.maiores[i] <= menor2) && (this.maiores[i] >= menor1)) {
+                menor3 = menor2;
+                menor2 = i;
+            }
+            if ((this.maiores[i] <= menor3) && (this.maiores[i] >= menor2)) {
+                maior3 = i;
+            }
+        }
+        return "Os 3 nºs mais sorteados são: " + (menor1 + 1) + ", " + (menor2 + 1) + " e " + (menor3 + 1) + ".";
+    }     */       
+    
+        
+        
+        
+        
+        
     }
 }
