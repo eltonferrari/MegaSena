@@ -14,13 +14,15 @@ public class MegaSenaParcer {
 
     private int numeroConcurso, n1, n2, n3, n4, n5, n6;
     private String data;
-    private Jogo jogo, jogoOrdenado;                
-    private int[] jogoContado, contagem = new int[60];
-    private int[] maiores, menores = new int [60];
-    private int maior1, maior2, maior3, 
-                maiorI1, maiorI2, maiorI3, 
-                menorI1, menorI2, menorI3 = 0;
-    private int menor1, menor2, menor3 = 1000;
+    private Jogo jogar, jogarOrdenado;                
+    private int[] jogoContado = new int[60];
+    private final int[] contagem = new int[60];
+    private int[] maiores = new int [60];
+    private int[] menores = new int [60];
+    private int maior1 = 0, maior2 = 0, maior3 = 0, 
+                maiorI1 = 0, maiorI2 = 0, maiorI3 = 0, 
+                menorI1 = 0, menorI2 = 0, menorI3 = 0;
+    private int menor1 = 1000, menor2 = 1000, menor3 = 1000;
     List listaJogos = new ArrayList<>();
 
     public MegaSenaParcer(String ms) {
@@ -47,7 +49,7 @@ public class MegaSenaParcer {
                 this.jogoContado = jogo.contaJogo(contagem, jogoOrdenado);
                 Concurso concurso = new Concurso(numeroConcurso,linha[1],jogoOrdenado);
                 System.out.println(concurso);
-                listaJogos.add(jogo);                
+                listaJogos.add(jogoOrdenado);                
             }            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MegaSenaParcer.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,7 +58,7 @@ public class MegaSenaParcer {
             System.out.println("Nº: " + (i + 1) + " X " + jogoContado[i]);
         }
         
-       maiores = jogoContado;
+        maiores = jogoContado;
         for (int i = 0; i < 60; i++) {
             if (maiores[i] >= maior1) {
                 maior3 = maior2;
@@ -96,7 +98,7 @@ public class MegaSenaParcer {
                     menor3 = menor2;
                     menorI3 = menorI2;
                     menor2 = menores[i];
-                    maiorI2 = i;
+                    menorI2 = i;
                 } else {
                     if ((menores[i] <= menor3) && (menores[i] >= menor2)) {
                         menor3 = menores[i];
@@ -108,5 +110,8 @@ public class MegaSenaParcer {
         System.out.println("Os 3 nºs menos sorteados são: " + (menorI1 + 1) + "(" + menor1 + ")" + ", "
                                                             + (menorI2 + 1) + "(" + menor2 + ")"  + " e "
                                                             + (menorI3 + 1) + "(" + menor3 + ")"  + "."); 
+        jogar = new Jogo(menorI1+1,menorI2+1,menorI3+1,maiorI1+1,maiorI2+1,maiorI3+1);
+        jogarOrdenado = jogar.ordena();
+        System.out.println(jogarOrdenado);
     }
 }

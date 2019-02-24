@@ -7,6 +7,9 @@ public class Concurso {
     private String data;
     private Jogo jogo;
 
+    public Concurso() {
+    }
+
     public Concurso(int numeroConcurso, String data, Jogo jogo) {
         this.numeroConcurso = numeroConcurso;
         this.data = data;
