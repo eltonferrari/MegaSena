@@ -19,10 +19,10 @@ public class MegaSenaParcer {
     private final int[] contagem = new int[60];
     private int[] maiores = new int [60];
     private int[] menores = new int [60];
-    private int maior1 = 0, maior2 = 0, maior3 = 0, 
-                maiorI1 = 0, maiorI2 = 0, maiorI3 = 0, 
-                menorI1 = 0, menorI2 = 0, menorI3 = 0;
-    private int menor1 = 1000, menor2 = 1000, menor3 = 1000;
+    private int maior1 = 0, maior2 = 0, maior3 = 0,
+                maior4 = 0, maior5 = 0, maior6 = 0,
+                maiorI1 = 0, maiorI2 = 0, maiorI3 = 0,
+                maiorI4 = 0, maiorI5 = 0, maiorI6 = 0;
     List listaJogos = new ArrayList<>();
 
     public MegaSenaParcer(String ms) {
@@ -61,6 +61,12 @@ public class MegaSenaParcer {
         maiores = jogoContado;
         for (int i = 0; i < 60; i++) {
             if (maiores[i] >= maior1) {
+                maior6 = maior5;
+                maiorI6 = maiorI5;
+                maior5 = maior4;
+                maiorI5 = maiorI4;
+                maior4 = maior3;
+                maiorI4 = maiorI3;
                 maior3 = maior2;
                 maiorI3 = maiorI2;
                 maior2 = maior1;
@@ -69,48 +75,59 @@ public class MegaSenaParcer {
                 maiorI1 = i;
             } else {
                 if ((maiores[i] >= maior2) && (maiores[i] <= maior1)) {
+                    maior6 = maior5;
+                    maiorI6 = maiorI5;
+                    maior5 = maior4;
+                    maiorI5 = maiorI4;
+                    maior4 = maior3;
+                    maiorI4 = maiorI3;
                     maior3 = maior2;
                     maiorI3 = maiorI2;
                     maior2 = maiores[i];
                     maiorI2 = i;
                 } else {
                     if ((maiores[i] >= maior3) && (maiores[i] <= maior2)) {
+                        maior6 = maior5;
+                        maiorI6 = maiorI5;
+                        maior5 = maior4;
+                        maiorI5 = maiorI4;
+                        maior4 = maior3;
+                        maiorI4 = maiorI3;
                         maior3 = maiores[i];
                         maiorI3 = i;
+                    } else {
+                        if ((maiores[i] >= maior4) && (maiores[i] <= maior3)) {
+                            maior6 = maior5;
+                            maiorI6 = maiorI5;
+                            maior5 = maior4;
+                            maiorI5 = maiorI4;
+                            maior4 = maiores[i];
+                            maiorI4 = i;
+                        } else {
+                            if ((maiores[i] >= maior5) && (maiores[i] <= maior4)) {
+                                maior6 = maior5;
+                                maiorI6 = maiorI5;
+                                maior5 = maiores[i];
+                                maiorI5 = i;
+                            } else {
+                                if ((maiores[i] >= maior6) && (maiores[i] <= maior5)) {
+                                    maior6 = maiores[i];
+                                    maiorI6 = i;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        System.out.println("Os 3 nºs mais sorteados são: " + (maiorI1 + 1) + "(" + maior1 + ")" + ", "
-                                                           + (maiorI2 + 1) + "(" + maior2 + ")"  + " e "
-                                                           + (maiorI3 + 1) + "(" + maior3 + ")"  + ".");
-        menores = jogoContado;
-        for (int i = 0; i < 60; i++) {
-            if (menores[i] <= menor1) {
-                menor3 = menor2;
-                menorI3 = menorI2;
-                menor2 = menor1;
-                menorI2 = menorI1;
-                menor1 = menores[i];
-                menorI1 = i;
-            } else {
-                if ((menores[i] <= menor2) && (menores[i] >= menor1)) {
-                    menor3 = menor2;
-                    menorI3 = menorI2;
-                    menor2 = menores[i];
-                    menorI2 = i;
-                } else {
-                    if ((menores[i] <= menor3) && (menores[i] >= menor2)) {
-                        menor3 = menores[i];
-                        menorI3 = i;
-                    }
-                }
-            }
-        }
-        System.out.println("Os 3 nºs menos sorteados são: " + (menorI1 + 1) + "(" + menor1 + ")" + ", "
-                                                            + (menorI2 + 1) + "(" + menor2 + ")"  + " e "
-                                                            + (menorI3 + 1) + "(" + menor3 + ")"  + "."); 
-        jogar = new Jogo(menorI1+1,menorI2+1,menorI3+1,maiorI1+1,maiorI2+1,maiorI3+1);
+        System.out.println("Os nºs mais sorteados são: " + (maiorI1 + 1) + "(" + maior1 + ")" + ", "
+                                                         + (maiorI2 + 1) + "(" + maior2 + ")"  + ", "
+                                                         + (maiorI3 + 1) + "(" + maior3 + ")"  + ", "
+                                                         + (maiorI4 + 1) + "(" + maior4 + ")"  + ", "
+                                                         + (maiorI5 + 1) + "(" + maior5 + ")"  + " e "
+                                                         + (maiorI6 + 1) + "(" + maior6 + ")"  + "."
+                          );
+        jogar = new Jogo(maiorI1+1,maiorI2+1,maiorI3+1,maiorI4+1,maiorI5+1,maiorI6+1);
         jogarOrdenado = jogar.ordena();
         System.out.println(jogarOrdenado);
     }
